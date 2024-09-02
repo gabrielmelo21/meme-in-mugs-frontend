@@ -1,0 +1,78 @@
+<div class="fade-in">
+
+  <!-- calculo de frete e sistema de pagamento -->
+
+  <div class="banner-hero"  >
+
+    <h1>Seu Carrinho</h1>
+    <p>Seu Carrinho</p>
+
+  </div>
+  <div class="divider"></div>
+
+  <div *ngFor="let product of cart" class="cart-item">
+    <img [src]="product.product_image" alt="{{ product.product_name }}" class="product-image">
+    <div class="product-details">
+      <h4>{{ product.product_name }}</h4>
+      <h3 style="font-weight: bold;color:#538fa6;">{{ product.product_price | currency:'BRL'}}</h3>
+    </div>
+    <button class="remove-button" (click)="removeFromCart(product.product_name)">
+    <img src="https://cdn.icon-icons.com/icons2/145/PNG/256/recycle_bin_21415.png" width="40" height="40" >
+    </button>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message center">
+    {{ errorMessage }}
+  </div>
+
+
+  <!-- Campo de entrada para CEP
+  <div class="cep-input-wrapper">
+    <div class="cep-input">
+      <label for="cep">Calcular Frete:</label>
+      <input id="cep" type="text" placeholder="Digite seu CEP">
+    </div>
+    <button class="search-button">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+  <button (click)="calcularFrete()">Calcular Frete</button>
+
+  -->
+
+
+
+  <!-- Seção inferior do carrinho -->
+
+ 
+  <div class="cart-summary">
+    <div class="freight">
+    <h4>Frete:</h4>
+    <p>R${{ valorFrete | number:'1.2-2' }}</p>
+  </div>
+    <div class="total">
+      <h4>Total:</h4>
+    <p>{{ calculateTotal() | currency:'BRL' }}</p>
+    </div>
+
+    <div class="checkout-container" style="margin-bottom: 100px;">
+
+      <mat-spinner *ngIf="isLoading" [diameter]="30" style="margin: 20px auto;"></mat-spinner>
+
+      <div class="center">
+        <div *ngIf="status == 'sucesso'"><b style="text-align: center;color:forestgreen;">Redirecionando...</b></div>
+        <div *ngIf="status == 'falha'"><b style="text-align: center;color:red;">Algo deu errado, tente novamente.</b></div>
+      </div>
+
+
+      <button [disabled]="cart.length === 0" class="checkout-button" style="margin-bottom:80px" (click)="checkout()" *ngIf="!isLoading && status !== 'sucesso'">
+        Finalizar Compra
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+</div>

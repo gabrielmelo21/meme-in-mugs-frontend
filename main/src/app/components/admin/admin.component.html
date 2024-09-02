@@ -1,0 +1,92 @@
+<div class="fade-in">
+
+
+
+  <div *ngIf="authenticated">
+    <h1 class="textCenter">Bem-vindo à área administrativa</h1>
+
+ 
+
+    <div class="center">
+      <mat-card class="padding10" style="width: 100% !important; margin-bottom: 400px">
+        <mat-card-title class="margin10">Adicionar Produto</mat-card-title>
+ 
+
+        <mat-card-content>
+          <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+ 
+
+
+            <mat-form-field style="width: 100%">
+              <input matInput formControlName="productName" placeholder="Nome do Produto">
+            </mat-form-field>
+    
+            <br>
+            <mat-form-field style="width: 100%">
+              <input matInput formControlName="productPrice" placeholder="Preço do Produto (Use Ponto)">
+            </mat-form-field>
+            <br>
+
+            <div class="form-group">
+              <label for="category-select">Categoria do Produto</label>
+              <select id="category-select" formControlName="category"  class="custom-select">
+                <option value="" disabled selected>Selecione uma categoria</option>
+                <option *ngFor="let category of categories" [value]="category">
+                  {{ category }}
+                </option>
+              </select>
+            </div>
+                
+       
+            
+            
+
+            <br>
+ 
+            <p>Foto do Produto (URL)</p><br>
+            <input type="file" (change)="onFileSelected($event)" accept="image/*">
+    
+            <div *ngIf="selectedFile" class="center">
+              <img [src]="selectedFileUrl" alt="Imagem selecionada" width="200">
+            </div>
+    
+            <div *ngIf="uploadDone">
+              <h3 style="color: green">Upload feito com sucesso para o Firebase.</h3>
+            </div>
+            <div *ngIf="uploadedImageUrl">
+              <p>Uploaded Image URL: <a [href]="uploadedImageUrl" target="_blank">{{ uploadedImageUrl }}</a></p>
+            </div>
+    
+            <div class="center" *ngIf="uploading" style="margin-top: 20px;">
+              <mat-spinner></mat-spinner>
+            </div>
+    
+            <br>
+            <div *ngIf="productStatus !== ''" style="color:green">
+ 
+            </div>
+            <br>
+            <button mat-raised-button color="primary" type="submit">Adicionar Produto</button>
+          </form> <br>
+
+
+          {{JSON.stringify(this.productStatus)}}
+
+        </mat-card-content>
+      </mat-card>
+      
+    </div>
+    
+
+  </div>
+
+
+
+  <div *ngIf="!authenticated">
+    <p>Você não está autorizado a acessar esta página.</p>
+  </div>
+
+
+
+
+</div>

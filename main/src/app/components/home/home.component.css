@@ -1,0 +1,191 @@
+.banner-hero {
+  background-image: url("/assets/teste.png");
+  background-size: cover;
+  background-position: center;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+  font-weight: bolder;
+  padding: 20px;
+  position: relative;
+  margin-top:40px !important;
+}
+
+ 
+ 
+
+.divider {
+  height: 1px;
+  background-color: #ddd;
+  margin: 20px 0;
+}
+
+
+
+
+
+
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Grid responsivo com largura mínima de 300px */
+  gap: 20px; /* Espaçamento entre os itens */
+}
+
+.product-item {
+  border: 1px solid #ddd; /* Borda ao redor de cada item */
+  padding: 15px; /* Espaçamento interno */
+  border-radius: 10px;
+  cursor: pointer;
+  
+}
+ 
+
+.product-item img {
+  width: 100%; /* Imagem ocupando toda a largura do contêiner */
+  height: auto; /* Mantém a proporção da imagem */
+  display: block; /* Remove espaços extras ao redor da imagem */
+  max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
+  border-radius: 10px;
+}
+
+.product-item h3 {
+  font-size: 1.2em;
+  margin: 10px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 2.4em; /* Altura fixa para títulos */
+  font-family: "Chewy" !important;
+}
+
+.product-item .product-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; /* Empurrar o botão para o fim do contêiner */
+  font-family: "Chewy" !important;
+}
+
+.product-item p {
+  font-size: 17pt;
+  color:  #007bff;
+  font-weight: bold;
+  margin: 0;
+  align-self: flex-start; /* Alinhar à esquerda */
+  font-family: "Chewy" !important;
+}
+
+.product-extra-info {
+  margin-top: 5px;
+}
+
+.product-extra-info .installment {
+  font-size: 14px;
+  color: #28a745; /* Cor para a tag de parcelamento */
+  font-weight: bold;
+  margin: 0;
+}
+
+.product-extra-info .discount {
+  font-size: 14px;
+  color: #dc3545; /* Cor para a tag de desconto */
+  text-decoration: line-through;
+  margin: 0;
+}
+
+.product-details p {
+  margin-top: 10px;
+}
+
+
+
+.fixed-button {
+  position: fixed;
+  top: 60px; /* Ajuste a distância do topo conforme necessário */
+  left: 10px; /* Ajuste a distância da esquerda conforme necessário */
+  z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+  border-radius: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.add-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #538fa6; /* Cor do botão */
+  color: white;
+  border: none;
+  font-size: 24px;
+  line-height: 40px; /* Alinhar o sinal de mais verticalmente */
+  text-align: center;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #095a7b; /* Cor ao passar o mouse */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 16px;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.category img {
+  width: 100%;
+  height: auto;
+  max-width: 150px; /* Ajuste conforme necessário */
+  border-radius: 8px;
+}
+
+.category p {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: bold;
+}
