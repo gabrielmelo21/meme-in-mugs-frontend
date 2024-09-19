@@ -19,6 +19,7 @@ import {YouTubePlayerModule} from "@angular/youtube-player";
 import { CreateMugComponent } from './create-mug/create-mug.component';
 import { AdminComponent } from './admin/admin.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { FuckComponent } from './fuck/fuck.component';
 
 
  
@@ -29,6 +30,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
   CreateMugComponent,
   AdminComponent,
   ShoppingCartComponent,
+  FuckComponent,
 
   ],
   imports: [

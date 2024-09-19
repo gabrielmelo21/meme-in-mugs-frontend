@@ -12,8 +12,8 @@ import {repeat} from "rxjs";
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
-
-
+  
+  currentPage: number = 1
   private validPassword = 'admin123'; // Defina a senha válida aqui
   public authenticated: boolean = false;
   productForm: FormGroup;
@@ -39,7 +39,8 @@ export class AdminComponent {
       productName: ['', Validators.required],
       productPrice: ['', Validators.required],
       productImg: [''],
-      category: ['']  
+      category: [''],
+      productVideo: [false] // Adiciona o campo productVideo com valor padrão "false"
     });
 
 
@@ -57,8 +58,78 @@ export class AdminComponent {
   }
 
 
-
   
+  changePage(page: number){
+       this.currentPage = page;    
+
+       if(this.currentPage == 2){
+               this.loadAllProducts();
+       }
+
+  }
+  
+  deleteProduct(product: string) {
+    // Pedir confirmação ao usuário
+    const confirmation = confirm(`Tem certeza de que deseja remover o produto: ${product}?`);
+  
+    // Se o usuário confirmar, prosseguir com a exclusão
+    if (confirmation) {
+      this.mainAPIService.deleteProduto(product).subscribe(
+        response => {
+          console.log('Produto removido com sucesso:', response);
+          this.loadAllProducts();
+        },
+        error => {
+          console.error('Erro ao remover o produto:', error);
+        }
+      );
+    } else {
+      console.log('Ação de remoção cancelada.');
+    }
+  }
+  
+
+
+  isLoading: boolean = false
+  products: any[] = [];
+  productsCount: any[] = [];
+  totalProducts: number = 0;
+
+  loadAllProducts(){
+        // Chamar a API passando o objeto
+        this.isLoading = true;
+        this.mainAPIService.listAllProducts().subscribe(
+          (data) => {
+            this.products = data;
+            this.isLoading = false;
+            console.log("Products were loaded." + JSON.stringify(data));
+            // Calcular o total de produtos
+           this.totalProducts = Object.values(this.productsCount).reduce((acc: number, count: number) => acc + count, 0);
+
+          },
+          (error) => {
+            console.error('Error fetching products', error);
+            this.isLoading = false;
+          }
+        );
+
+        this.mainAPIService.listProductsCount().subscribe(
+          (data) => {
+             this.productsCount = data 
+             console.log("Products were loaded." + JSON.stringify(data));
+          },
+          (error) => {
+            console.error('Error fetching products', error);
+          }
+        )
+  }
+
+
+  removeProduct(product_name: string){
+     
+  }
+
+
 
   onFileSelected(event: any) {
     const files: FileList = event.target.files;
@@ -105,14 +176,31 @@ export class AdminComponent {
    }
    }
 
-
+   changeVideoStatus(product_name: string, newStatus: boolean) {
+    const confirmation = confirm(`Tem certeza de que deseja alterar o status de : ${product_name} para ` + newStatus + "?");
+  
+    if (confirmation) {
+      this.mainAPIService.updateVideoStatus(product_name, newStatus).subscribe(
+        response => {
+          console.log('Produto atualizado com sucesso:', response);
+          this.loadAllProducts();  // Atualiza a lista de produtos após a alteração
+        },
+        error => {
+          console.error('Erro ao atualizar produto', error);
+        }
+      );
+    } else {
+      console.log('Ação de alteração cancelada.');
+    }
+  }
+  
 
 
   productStatus: any;
 
   onSubmit(): void {
     if (this.productForm.valid) {
- 
+       alert(JSON.stringify(this.productForm.value))
      this.mainAPIService.addProduto(this.productForm.value).subscribe(
         response => {
           console.log('Product created successfully', response);

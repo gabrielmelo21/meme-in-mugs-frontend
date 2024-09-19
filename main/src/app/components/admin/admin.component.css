@@ -32,4 +32,44 @@
     border-color: #007bff;
     box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
   }
+  .button-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between; /* Espaço entre os botões */
+    gap: 10px; /* Espaçamento entre os botões */
+  }
+  
+  button {
+    flex: 1; /* Faz com que os botões ocupem o mesmo espaço */
+    font-weight: bold;
+    font-size: 8pt !important;
+    border-radius: 20px;
+    padding: 10px;
+  }
+  
+
+
+
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .delete-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .delete-button mat-icon {
+    color: red; /* Cor do ícone de deletar */
+  }
+
   

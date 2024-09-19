@@ -18,6 +18,9 @@
   display: flex;
   justify-content: right;
   width: 50%;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 .logo-t {
   height: 33px; /* Ajuste o tamanho da logo conforme necessário */

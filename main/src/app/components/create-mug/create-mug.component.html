@@ -1,9 +1,5 @@
 <div class="fade-in">
-  <div class="banner-hero">
 
-    <h1>Criar Caneca!</h1>
-    <p>Crie sua caneca da maneira que desejar e enviamos para todo Brasil.</p>
-  </div>
 
   <div class="center">
 
@@ -17,20 +13,19 @@
          -->
 
 
-         <h1>Crie Sua Caneca Personalizada</h1>
-         <p>Transforme sua caneca em algo único e especial! Siga os passos abaixo para personalizar sua caneca:</p>
+         <h2 style="margin-top: 40px;">Crie Sua Caneca Personalizada</h2>
+    
          <ul>
              <li>Clique no botão "Adicionar sua imagem" para fazer upload da sua foto ou arte.</li>
              <li>Veja a prévia da sua caneca personalizada.</li>
-             <li>Quando estiver satisfeito, clique em "Criar Caneca" para finalizar seu pedido.</li>
+             <li>Clique em "Criar Caneca" para finalizar seu pedido.</li>
          </ul>
-         <p class="price">Cada caneca personalizada custa <strong>R$30</strong>.</p>
+         <p class="price">Cada caneca personalizada custa <strong>R$34.90</strong>.</p>
 
          
 
          <div class="center">
            <div class="custom-file-upload" (click)="triggerFileInput()">
-             <mat-icon>upload</mat-icon> <!-- Aqui você pode usar um ícone de uma biblioteca como Font Awesome -->
              Adicionar sua imagem
            </div>
            <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" style="display: none;">
@@ -61,21 +56,21 @@
             <br>
             <button (click)="onSubmit()" mat-raised-button color="default" type="submit" class="btn-custom" [disabled]="uploading">
               <ng-container *ngIf="!uploading && messageType == ''">
-                <mat-icon>create</mat-icon>
+               
                 Criar Caneca
               </ng-container>
             <ng-container *ngIf="uploading">
-              <mat-icon>pending</mat-icon>
+              
                Criando Caneca...
               </ng-container>
 
               <ng-container *ngIf="message!='' && messageType == 'success'">
-                <mat-icon>verified</mat-icon>
+               
                  Caneca Criada!
                 </ng-container>
            
                 <ng-container *ngIf="message!='' && messageType == 'error'">
-                  <mat-icon>restart_alt</mat-icon>
+             
                   Tente Novamente.
                   </ng-container>
 

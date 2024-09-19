@@ -3,6 +3,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {CreateMugComponent} from "./components/create-mug/create-mug.component";
 import {AdminComponent} from "./components/admin/admin.component";
 import {ShoppingCartComponent} from "./components/shopping-cart/shopping-cart.component";
+import { FuckComponent } from './components/fuck/fuck.component';
 
 
 const routes: Routes = [
@@ -13,8 +14,8 @@ const routes: Routes = [
   },
   { path: 'createMug', component: CreateMugComponent },
   { path: 'shoppingCart', component: ShoppingCartComponent},
-  { path: 'admin/:password', component: AdminComponent}
-
+  { path: 'admin/:password', component: AdminComponent},
+  { path: 'fuck', component: FuckComponent}
 
 ];
 
